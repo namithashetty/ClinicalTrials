@@ -1,0 +1,10 @@
+{
+    "name": "Namitha",
+    "email": "namishetty222@yahoo.com",
+    "username": "namishetty222@yahoo.com",
+    "password": "bappanadu",
+    "smtp": {
+        "host": "smtp.mail.yahoo.com",
+        "ssl": true
+    }
+}

@@ -1,0 +1,28 @@
+include layout
+	#login-container
+		form( method="post")#login-form.form-horizontal
+			h4.login Login
+			.form-group
+				input(type="text", name="user", id='user-tf', placeholder='Username').required.form-control
+			.form-group
+				input(type="password", name="pass", id='pass-tf', placeholder='Password').required.form-control
+			div
+				button(type="submit")#btn-login.btn.btn-primary 
+							| Sign in
+					label#remember-me.checkbox Remember Me
+					input(type="checkbox", checked='checked').login-checkbox
+			div.btm-links
+				a(href='#')#forgot-password Forgot Your Password?
+				a(href='/signup')#create-account Create Account
+			div.clear-fix
+				
+	include modals/alert
+	include modals/lost-password
+
+	script(src='/vendor/jquery.min.js')
+	script(src='/vendor/jquery.form.js')
+	script(src='/vendor/bootstrap.js')
+	script(src='/js/views/login.js')
+	script(src='/js/controllers/loginController.js')
+	script(src='/js/form-validators/loginValidator.js')
+	script(src='/js/form-validators/emailValidator.js')

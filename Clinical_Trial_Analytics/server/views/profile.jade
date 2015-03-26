@@ -1,0 +1,13 @@
+extends layout
+
+block content
+	#search-container
+		form( method="post").well
+			ul.nav.nav-pills.nav-justified
+				li.active: a(href="#book-a") Home
+				li: a(href="#book-b") Profile
+
+block scripts
+	script(src='/vendor/jquery.min.js')
+	script(src='/vendor/jquery.form.js')
+	script(src='/vendor/bootstrap.js')
