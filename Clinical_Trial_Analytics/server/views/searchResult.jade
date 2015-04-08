@@ -17,6 +17,7 @@ block content
 			
 		
 		
+		
 		//-	.city-panel
 				input(type="checkbox")
 				label#city.checkbox-inline City	
@@ -47,10 +48,10 @@ block content
 					
 		div.clear-fix
 		.search-panel
-			form( method="get")#search-form.form-horizontal
+			form( method="post")#search-form.form-horizontal
 				label#disease-label Disease 
 				input(type="text", name="disease", id='disease-tf', placeholder='Search for a Disease', autocomplete='off').required.form-control
-				button(type="submit", id='search-btn').btn.btn-success.btn-lg.btn-block
+				button(type="button", id='search-btn').btn.btn-success.btn-lg.btn-block
 					i.icon-lock.icon-white
 					| Search
 					div.clear-fix

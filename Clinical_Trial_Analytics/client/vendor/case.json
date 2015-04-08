@@ -1,0 +1,137 @@
+{
+  "clinical_study": {
+    "-rank": "381",
+    "required_header": {
+      "download_date": "ClinicalTrials.gov processed this data on March 12, 2015",
+      "link_text": "Link to the current ClinicalTrials.gov record.",
+      "url": "http://clinicaltrials.gov/show/NCT00001292"
+    },
+    "id_info": {
+      "org_study_id": "920106",
+      "secondary_id": "92-C-0106",
+      "nct_id": "NCT00001292"
+    },
+    "brief_title": "Study of Scaling Disorders and Other Inherited Skin Diseases",
+    "official_title": "Clinical and Genetic Studies of the Scaling Disorders and Other Selected Genodermatoses",
+    "sponsors": {
+      "lead_sponsor": {
+        "agency": "National Cancer Institute (NCI)",
+        "agency_class": "NIH"
+      }
+    },
+    "source": "National Institutes of Health Clinical Center (CC)",
+    "oversight_info": { "authority": "United States: Federal Government" },
+    "brief_summary": {
+      "textblock": "
+      The purpose of this study is to identify the genes responsible for certain scaling disorders
+      and other inherited skin diseases and to learn about the medical problems they cause.  In
+      some cases, these may include problems affecting organs other than the skin, such as the
+      eyes, teeth and bones.
+
+      Patients with inherited skin disorders, including Darier's disease (keratosis follicularis),
+      lamellar ichthyosis, epidermolysis bullosa, cystic acne, and others, and their relatives may
+      be eligible for this study.  Patients will have a medical history, physical examination with
+      particular emphasis on the skin, and routine blood tests.  Additional procedures for
+      patients and unaffected relatives may include:
+
+        1. Blood sample collection
+
+        2. Dental exam with X-ray of the jaw
+
+        3. Eye examination
+
+        4. X-rays of the skull, ribs, chest, hands, feet, spine, arms, or legs
+
+        5. Bone density scan
+
+        6. Photographs of the skin
+
+        7. Skin biopsies (removal of a small tissue sample under local anesthetic)
+
+        8. Buccal sample (gentle brushing inside the cheek to collect a cell sample) for gene
+           studies
+
+      Patients who request the results of their gene testing will be provided this information.
+    "
+    },
+    "detailed_description": {
+      "textblock": "
+      We propose to investigate the genetics of the scaling disorders and other genodermatoses
+      which are believed to behave in a Mendelian manner.  Families for study will be ascertained
+      through articles in the Ichthyosis Focus, (the newsletter of the Foundation for Ichthyosis
+      and Related Skin Types), physician referrals, and patient self-referrals.  Efforts will be
+      made to further characterize the clinical findings in both affected persons and unaffected
+      gene carriers.  Using candidate genes, especially those known to be involved in structural
+      abnormalities of skin, we will attempt to map and isolate major genes contributing to
+      expression of the disease phenotype.  Failing this direct approach, a random search of the
+      genome (so-called, \"reverse genetics\") will be utilized.  In addition, normal and diseased
+      skin will be used in cell culture and animal experiments (under a separate protocol) to test
+      new therapeutic modalities.
+    "
+    },
+    "overall_status": "Completed",
+    "start_date": "February 1992",
+    "completion_date": "April 2001",
+    "phase": "N/A",
+    "study_type": "Observational",
+    "study_design": "N/A",
+    "condition": [
+      "Genetic Skin Disease",
+      "Keratosis Follicularis",
+      "Lamellar Ichthyosis"
+    ],
+    "eligibility": {
+      "criteria": {
+        "textblock": "
+        No steroid sulfatase deficiency.
+      "
+      },
+      "gender": "Both",
+      "minimum_age": "N/A",
+      "maximum_age": "N/A",
+      "healthy_volunteers": "Accepts Healthy Volunteers"
+    },
+    "location": {
+      "facility": {
+        "name": "National Cancer Institute (NCI)",
+        "address": {
+          "city": "Bethesda",
+          "state": "Maryland",
+          "zip": "20892",
+          "country": "United States"
+        }
+      }
+    },
+    "location_countries": { "country": "United States" },
+    "reference": [
+      {
+        "citation": "DiGiovanna JJ, Bale SJ. Epidermolytic hyperkeratosis: applied molecular genetics. J Invest Dermatol. 1994 Mar;102(3):390-4. Review.",
+        "PMID": "7509838"
+      },
+      {
+        "citation": "Russell LJ, DiGiovanna JJ, Rogers GR, Steinert PM, Hashem N, Compton JG, Bale SJ. Mutations in the gene for transglutaminase 1 in autosomal recessive lamellar ichthyosis. Nat Genet. 1995 Mar;9(3):279-83.",
+        "PMID": "7773290"
+      }
+    ],
+    "verification_date": "April 2000",
+    "lastchanged_date": "March 4, 2008",
+    "firstreceived_date": "November 3, 1999",
+    "keyword": [
+      "DNA Markers",
+      "Family Studies",
+      "Gene Mapping",
+      "Ichthyosis",
+      "Keratin",
+      "Linkage Analysis",
+      "Scaling Disorders",
+      "Skin"
+    ],
+    "has_expanded_access": "No",
+    "condition_browse": {
+      "mesh_term": [
+        "Darier Disease",
+        "Skin Diseases"
+      ]
+    }
+  }
+}

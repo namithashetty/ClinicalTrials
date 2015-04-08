@@ -14,6 +14,7 @@ block content
 			tbody
 			- for (var i = 0; i < accts.length; i++)
 				tr
+					td=accts.brief_title
 					td= i+1
 					td= accts[i].name
 					td= accts[i].country

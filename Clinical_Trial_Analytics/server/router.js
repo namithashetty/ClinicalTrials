@@ -24,6 +24,10 @@ module.exports = function(app) {
 		}
 	});
 	
+	
+	
+	
+	
 	app.post('/', function(req, res){
 		AM.manualLogin(req.param('user'), req.param('pass'), function(e, o){
 			if (!o){
@@ -199,6 +203,14 @@ module.exports = function(app) {
 		});
 	});
 	
+	//Get all data from BSON database
+	app.get('/searchResult', function(req, res) {
+		AM.searchResult(function(e, bsonSearch){
+			res.send(bsonSearch);
+		})
+	});
+	
+	
 	//Search result
 	app.get('/search', function(req, res) {
 		res.render('search', {  title: 'Search' });
@@ -206,6 +218,6 @@ module.exports = function(app) {
 	
 	app.get('*', function(req, res) { res.render('404', { title: 'Page Not Found'}); });
 
-};
+}; 
 
 

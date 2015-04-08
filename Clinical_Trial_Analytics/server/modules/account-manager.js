@@ -7,6 +7,7 @@ var moment 		= require('moment');
 var dbPort 		= 27017;
 var dbHost 		= 'localhost';
 var dbName 		= 'clinical_trials';
+var dbNameSearch = 'clinical';
 
 /* establish the database connection */
 
@@ -20,6 +21,17 @@ var db = new MongoDB(dbName, new Server(dbHost, dbPort, {auto_reconnect: true}),
 });
 var accounts = db.collection('accounts');
 
+/*Establish connection to json data db*/
+
+var dbSearch = new MongoDB(dbNameSearch, new Server(dbHost, dbPort, {auto_reconnect: true}), {w: 1});
+	dbSearch.open(function(e, d){
+	if (e) {
+		console.log(e);
+	}	else{
+		console.log('connected to database :: ' + dbNameSearch);
+	}
+});
+var bsonSearch = dbSearch.collection('bson_results');
 
 /* login validation methods */
 
@@ -201,5 +213,15 @@ var findByMultipleFields = function(a, callback)
 		else callback(null, results)
 	});
 }
-       
+    
+exports.searchResult = function(callback)
+{
+	bsonSearch.find().toArray(
+		function(e, res) {
+		if (e) callback(e)
+		else callback(null, res)
+	});
+}
+   
+
 
