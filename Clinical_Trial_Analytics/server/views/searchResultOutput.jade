@@ -1,0 +1,24 @@
+
+include layout
+
+	#searchResult-container
+		div.container(style='margin:20px', font-size: 100%)
+		- searchResult = typeof(result) != 'undefined' ? result : { }
+		
+			div#subscribe
+				button#btn-subscribe.btn
+					i.icon-lock.icon-white
+					| Subscribe
+			
+			#{searchResult}
+				
+	include modals/alert
+	include modals/subscribe
+	
+	script(src='/vendor/jquery.min.js')
+	script(src='/vendor/jquery.form.js')
+	script(src='/vendor/bootstrap.js')
+	script(src='/js/views/subscribe.js')
+	script(src='/js/controllers/subscribeController.js')
+	script(src='/js/form-validators/subscribeValidator.js')
+	script(src='/js/form-validators/subscribeEmailValidator.js')

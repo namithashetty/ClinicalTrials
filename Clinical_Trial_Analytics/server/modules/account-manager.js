@@ -8,6 +8,7 @@ var dbPort 		= 27017;
 var dbHost 		= 'localhost';
 var dbName 		= 'clinical_trials';
 var dbNameSearch = 'clinical';
+var dbNameSubscribe = 'subscribe';
 
 /* establish the database connection */
 
@@ -32,6 +33,18 @@ var dbSearch = new MongoDB(dbNameSearch, new Server(dbHost, dbPort, {auto_reconn
 	}
 });
 var bsonSearch = dbSearch.collection('bson_results');
+
+/*Establish connection to subscribe data db*/
+
+var dbSubscribe = new MongoDB(dbNameSubscribe, new Server(dbHost, dbPort, {auto_reconnect: true}), {w: 1});
+	dbSubscribe.open(function(e, d){
+	if (e) {
+		console.log(e);
+	}	else{
+		console.log('connected to database :: ' + dbNameSubscribe);
+	}
+});
+var subscribers = dbSubscribe.collection('subscribers');
 
 /* login validation methods */
 
@@ -85,6 +98,13 @@ exports.addNewAccount = function(newData, callback)
 			});
 		}
 	});
+}
+
+exports.addNewSubscriber = function(newData, callback)
+{
+	// append date stamp when record was created //
+	newData.date = moment().format('MMMM Do YYYY, h:mm:ss a');
+	subscribers.insert(newData, {safe: true}, callback);
 }
 
 exports.updateAccount = function(newData, callback)
@@ -145,7 +165,7 @@ exports.validateResetLink = function(email, passHash, callback)
 
 exports.getAllRecords = function(callback)
 {
-	accounts.find().toArray(
+	bsonSearch.find().toArray(
 		function(e, res) {
 		if (e) callback(e)
 		else callback(null, res)
@@ -214,14 +234,26 @@ var findByMultipleFields = function(a, callback)
 	});
 }
     
-exports.searchResult = function(callback)
+//Get Record by Search text entered in the search field
+exports.searchResult = function(disease, callback)
 {
-	bsonSearch.find().toArray(
+	 bsonSearch.find({ $or: [ { 'clinical_study.brief_title': disease } , { 'clinical_study.official_title': disease } ] }).toArray(
+	//bsonSearch.find({ a : parseInt(disease) }).toArray(
 		function(e, res) {
 		if (e) callback(e)
 		else callback(null, res)
-	});
+	})
 }
-   
 
+exports.searchResultOutput = function(output, callback)
+{
+	 console.log("Inside AM:" +output);
+	bsonSearch.find({'clinical_study.brief_summary.textblock': output }).toArray(
+		function(e, res) {		 
+		if (e) callback(e)
+		else callback(null, res)
+	})
+}
+
+   
 

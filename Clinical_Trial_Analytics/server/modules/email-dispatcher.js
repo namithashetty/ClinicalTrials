@@ -34,6 +34,18 @@ EM.dispatchSignUpSuccessEmail = function(account, callback)
 	}, callback );
 }
 
+EM.dispatchSubscribeEmail = function(account, callback)
+{
+	EM.server.send({
+		from         : ES.sender,
+		to           : account.email,
+		subject      : 'Subscribe',
+		text         : 'something went wrong... :(',
+		attachment   : EM.subscribeEmail(account)
+	}, callback );
+}
+
+
 EM.composeEmail = function(o)
 {
 	var link = 'http://localhost:8080/reset-password?e='+o.email+'&p='+o.pass;
@@ -54,6 +66,18 @@ EM.signupEmail = function(o)
 		html += "Hi "+o.name+",<br><br>";
 		html += "Your username is :: <b>"+o.user+"</b><br><br>";
 		html += "<a href='"+link+"'>Please click here to access your account</a><br><br>";
+		html += "Cheers,<br>";
+		html += "Namitha<br><br>";
+		html += "</body></html>";
+	return  [{data:html, alternative:true}];
+}
+
+EM.subscribeEmail = function(o)
+{
+	var link = 'http://localhost:8080/SearchResultOutput';
+	var html = "<html><body>";
+		html += "Hi "+o.name+",<br><br>";
+		html += "<b>Thank you for subscribing for this study<b><br><br>";
 		html += "Cheers,<br>";
 		html += "Namitha<br><br>";
 		html += "</body></html>";

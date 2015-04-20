@@ -1,0 +1,21 @@
+// preset form values if we receive a userdata object //
+- user = typeof(udata) != 'undefined' ? udata : { }
+// store the userId on the client side in a hidden input field //
+input(type='hidden', value= user._id)#userId
+
+#get-subscribe.modal.fade
+	div.modal-dialog
+		div.modal-content
+			div.modal-header
+				button.close(data-dismiss='modal') x
+				h3 Subscribe to the Study
+			div.modal-body
+			form( method="post" )#subscribe-form.well
+				p Please enter the email address associated with your account
+				input#email-tf.input-xlarge(type='text', name='email', value= user.email)							 	
+				button(type="submit")#submit.btn.btn-primary Submit
+				button(data-dismiss="modal")#cancel.btn Cancel
+				div.alert.alert-error
+				button(data-dismiss="alert").close
+			div.modal-footer
+

@@ -2,81 +2,22 @@
 extends layout
 
 block content
-	#search-container
-		.btn-group#dropdown-container
-			button(type="button", data-toggle="dropdown", aria-expanded="false").btn.btn-success.dropdown-toggle
-				| Account Settings
-				Action.caret
-			ul.dropdown-menu
-				li: a(href="/home") Update your profile
-				li: a(href="#") Another action
-				li.divider
-				button#btn-logout.btn.btn-danger
-					i.icon-lock.icon-white
-					| Sign Out
-			
+	#searchResult-container
+		div.container(style='margin:20px', font-size: 100%)
+		- searchResult1 = typeof(result1) != 'undefined' ? result1 : { }
+		- searchResult0 = typeof(result0) != 'undefined' ? result0 : { }
 		
-		
-		
-		//-	.city-panel
-				input(type="checkbox")
-				label#city.checkbox-inline City	
+			div.searchresult				
+				a(href=encodeURI("http://localhost:8080/searchResultOutput?output=#{searchResult0}")) #{searchResult0}
 				br
-				div.age-panel
-					label Age-Group
-				
-				#less_than_twenty
-					input(type="checkbox")
-					label.checkbox-inline#inlineCheckbox1 <20		
-				#twenty_to_thirty
-					input(type="checkbox")
-					label.checkbox-inline#inlineCheckbox2 20 - 30
-				#thirty_to_forty
-					input(type="checkbox")
-					label.checkbox-inline 30 - 40
-				#forty_to_fifty
-					input(type="checkbox")
-					label.checkbox-inline 40 - 50
-				#fifty_to_sixty
-					input(type="checkbox")
-					label.checkbox-inline 50 - 60
-				#greater_than_sixty
-					input(type="checkbox")
-					label.checkbox-inline >60   -//
+				br
+				a(href=encodeURI("http://localhost:8080/searchResultOutput?output=#{searchResult1}")) #{searchResult1}  
 					
-					
-					
-		div.clear-fix
-		.search-panel
-			form( method="post")#search-form.form-horizontal
-				label#disease-label Disease 
-				input(type="text", name="disease", id='disease-tf', placeholder='Search for a Disease', autocomplete='off').required.form-control
-				button(type="button", id='search-btn').btn.btn-success.btn-lg.btn-block
-					i.icon-lock.icon-white
-					| Search
-					div.clear-fix
-	
-	include modals/alert
-	include modals/confirm
-
 block scripts
 	script(src='/vendor/jquery.min.js')
 	script(src='/vendor/bootstrap-typeahead.js')
 	script(src='/vendor/jquery.form.js')
 	script(src='/vendor/bootstrap.js')
-	script(src='/js/views/home.js')
-	script(src='/js/controllers/homeController.js')
 	script(src='/js/views/search.js')
 	
-	script.
-		$('#disease-tf').typeahead([{
-			source: [
-				{ id: 1, name: 'Heart Attack' },
-				{ id: 2, name: 'Brain' },
-				{ id: 3, name: 'Brain Cancer' },
-				{ id: 4, name: 'Amnesia' },
-				{ id: 5, name: 'Shoulder pain' },
-				{ id: 6, name: 'Cysts' },
-				{ id: 7, name: 'Leg pain' },
-			] 
-		}]);
+	

@@ -4,60 +4,31 @@ extends layout
 block content
 	#search-container
 		.btn-group#dropdown-container
-			button(type="button", data-toggle="dropdown", aria-expanded="false").btn.btn-success.dropdown-toggle
+			button(type="button", data-toggle="dropdown", aria-expanded="false")#account-settings.btn.btn-success.dropdown-toggle
 				| Account Settings
 				Action.caret
 			ul.dropdown-menu
-				li: a(href="/home") Update your profile
-				li: a(href="#") Another action
-				li.divider
+				li: a(href="/home")#update-your-profile Update your profile
 				button#btn-logout.btn.btn-danger
 					i.icon-lock.icon-white
 					| Sign Out
 			
-		
-		
-		//-	.city-panel
-				input(type="checkbox")
-				label#city.checkbox-inline City	
-				br
-				div.age-panel
-					label Age-Group
-				
-				#less_than_twenty
-					input(type="checkbox")
-					label.checkbox-inline#inlineCheckbox1 <20		
-				#twenty_to_thirty
-					input(type="checkbox")
-					label.checkbox-inline#inlineCheckbox2 20 - 30
-				#thirty_to_forty
-					input(type="checkbox")
-					label.checkbox-inline 30 - 40
-				#forty_to_fifty
-					input(type="checkbox")
-					label.checkbox-inline 40 - 50
-				#fifty_to_sixty
-					input(type="checkbox")
-					label.checkbox-inline 50 - 60
-				#greater_than_sixty
-					input(type="checkbox")
-					label.checkbox-inline >60   -//
-					
-					
-					
 		div.clear-fix
 		.search-panel
-			form( method="get")#search-form.form-horizontal
-				label#disease-label Disease 
+			form( method="get", action="/searchResult")#search-form.form-horizontal
 				input(type="text", name="disease", id='disease-tf', placeholder='Search for a Disease', autocomplete='off').required.form-control
-				button(type="submit", id='search-btn').btn.btn-success.btn-lg.btn-block
+				button(type="submit", id='search-btn', name='search').btn.btn-success.btn-lg.btn-block
 					i.icon-lock.icon-white
 					| Search
 					div.clear-fix
-	
+		
+		div#wordcloud
+			img(src='/images/wordCloud.png', alt='Word Cloud', style='width:463px;height:400px;border-radius:15px')
+
+			
 	include modals/alert
 	include modals/confirm
-
+					
 block scripts
 	script(src='/vendor/jquery.min.js')
 	script(src='/vendor/bootstrap-typeahead.js')
@@ -65,17 +36,6 @@ block scripts
 	script(src='/vendor/bootstrap.js')
 	script(src='/js/views/home.js')
 	script(src='/js/controllers/homeController.js')
-	script(src='/js/views/search.js')
 	
-	script.
-		$('#disease-tf').typeahead([{
-			source: [
-				{ id: 1, name: 'Heart Attack' },
-				{ id: 2, name: 'Brain' },
-				{ id: 3, name: 'Brain Cancer' },
-				{ id: 4, name: 'Amnesia' },
-				{ id: 5, name: 'Shoulder pain' },
-				{ id: 6, name: 'Cysts' },
-				{ id: 7, name: 'Leg pain' },
-			] 
-		}]);
+
+	

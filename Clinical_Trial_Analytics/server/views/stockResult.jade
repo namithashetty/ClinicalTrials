@@ -1,0 +1,10 @@
+
+extends layout
+
+block content
+	#searchResult-container
+		div.container(style='margin:20px', font-size: 100%)
+		- stockResult = typeof(result) != 'undefined' ? result : { }
+			#{stockResult}
+		
+block scripts
