@@ -1,11 +1,37 @@
+!!! 5
+html
+	head
+		title Node.js Login
+		link(rel='stylesheet', href='/vendor/bootstrap.css')
+		link(rel='stylesheet', href='/css/style.css')
+		link(rel='stylesheet', href='/font-awesome/css/font-awesome-2.css')
+		meta(name='viewport', content='width=device-width, initial-scale=1')
 
-extends layout
+	body(style="background-image:url(../../images/signup.jpg); background-size:cover")
+		#search-result
+			.navbar-wrapper
+				.container
+					.navbar.navbar-inverse.navbar-static-top
+						.navbar-header
+							a.navbar-toggle(data-toggle='collapse', data-target='.navbar-collapse')
+								span.icon-bar
+								| &#x9; 
+								span.icon-bar
+								| &#x9;
+								span.icon-bar
+							a.navbar-brand(href='#') Clinical Trials
+						.navbar-collapse.collapse
+							ul.nav.navbar-nav
+								li.active
+									a(href='/login') Home
+								li
+									a(href='', target='ext') About
+								li
+									a(href='#contact') Contact
 
-block content
 	include account
 	include modals/alert
 
-block scripts
 	script(src='/vendor/jquery.min.js')
 	script(src='/vendor/jquery.form.js')
 	script(src='/vendor/bootstrap.js')

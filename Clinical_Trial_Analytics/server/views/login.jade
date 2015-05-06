@@ -1,19 +1,53 @@
-include layout
-	#login-container
-		form( method="post")#login-form.form-horizontal
-			h4.login Login
-			.form-group
-				input(type="text", name="user", id='user-tf', placeholder='Username').required.form-control
-			.form-group
-				input(type="password", name="pass", id='pass-tf', placeholder='Password').required.form-control
-			div
-				button(type="submit")#btn-login.btn.btn-primary 
-							| Sign in
-					label#remember-me.checkbox Remember Me
-					input(type="checkbox", checked='checked').login-checkbox
-			div.btm-links
-				a(href='#')#forgot-password Forgot Your Password?
-				a(href='/signup')#create-account Create Account
+!!! 5
+html
+	head
+		title Node.js Login
+		link(rel='stylesheet', href='/vendor/bootstrap.css')
+		link(rel='stylesheet', href='/css/style.css')
+		link(rel='stylesheet', href='/font-awesome/css/font-awesome-2.css')
+		meta(name='viewport', content='width=device-width, initial-scale=1')
+
+	body(style="background-color:#2c3338")
+		#search-result
+			.navbar-wrapper
+				.container
+					.navbar.navbar-inverse.navbar-static-top
+						.navbar-header
+							a.navbar-toggle(data-toggle='collapse', data-target='.navbar-collapse')
+								span.icon-bar
+								| &#x9; 
+								span.icon-bar
+								| &#x9;
+								span.icon-bar
+							a.navbar-brand(href='#') Clinical Trials
+						.navbar-collapse.collapse
+							ul.nav.navbar-nav
+								li.active
+									a(href='/') Home
+								li
+									a(href='', target='ext') About
+								li
+									a(href='#contact') Contact
+	link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Open+Sans:400,700')
+	.container
+		#login-container
+			form( method="post")#login-form
+				fieldset.clearfix
+					p
+						span.fontawesome-user
+						input(type="text", name="user", id='user-tf', placeholder='Username', onblur="if(this.value == '') this.value = 'Username'", onfocus="if(this.value == 'Username') this.value = ''", required='')
+					p
+						span.fontawesome-lock
+						input(type="password", name="pass", id='pass-tf', placeholder='Password', onblur="if(this.value == '') this.value = 'Password'", onfocus="if(this.value == 'Password') this.value = ''")
+					p
+						input(type='submit', value='Sign In', id='btn-login')
+								| Sign in
+					div.btm-links
+						a(href='#')#forgot-password Forgot Your Password?
+			p		
+				|Not a member? 
+				a(href='/signup')#create-account Sign up now
+				span.fontawesome-arrow-right
 			div.clear-fix
 				
 	include modals/alert

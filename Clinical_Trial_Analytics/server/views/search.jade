@@ -1,35 +1,74 @@
+!!! 5
+html
+	head
+		title Node.js Login
+		link(rel='stylesheet', href='/vendor/bootstrap.css')
+		link(rel='stylesheet', href='/css/style.css')
+		link(rel='stylesheet', href='/font-awesome/css/font-awesome-2.css')
+		meta(name='viewport', content='width=device-width, initial-scale=1')
 
-extends layout
-
-block content
-	#search-container
-		.btn-group#dropdown-container
-			button(type="button", data-toggle="dropdown", aria-expanded="false")#account-settings.btn.btn-success.dropdown-toggle
-				| Account Settings
-				Action.caret
-			ul.dropdown-menu
-				li: a(href="/home")#update-your-profile Update your profile
-				button#btn-logout.btn.btn-danger
-					i.icon-lock.icon-white
-					| Sign Out
+	body(style="background-image:url('../../images/login.jpg'); background-size:cover");
+		#search-result
+			.navbar-wrapper
+				.container
+					.navbar.navbar-inverse.navbar-static-top
+						.navbar-header
+							a.navbar-toggle(data-toggle='collapse', data-target='.navbar-collapse')
+								span.icon-bar
+								| &#x9; 
+								span.icon-bar
+								| &#x9;
+								span.icon-bar
+							a.navbar-brand(href='#') Clinical Trials
+						.navbar-collapse.collapse
+							ul.nav.navbar-nav
+								li.active
+									a(href='/search') Home
+								li
+									a(href='', target='ext') About
+								li
+									a(href='#contact') Contact
+								li#dropdown-container
+									.btn-group
+										button(type="button", data-toggle="dropdown", aria-expanded="false")#account-settings.btn.btn-success.dropdown-toggle
+											| Account Settings
+											Action.caret
+										ul.dropdown-menu
+											li: a(href="/home")#update-your-profile Update your profile
+											button#btn-logout.btn.btn-danger
+												| Sign Out
 			
 		div.clear-fix
+	
+			
+		div.clear-fix
+	#search-container			
 		.search-panel
 			form( method="get", action="/searchResult")#search-form.form-horizontal
 				input(type="text", name="disease", id='disease-tf', placeholder='Search for a Disease', autocomplete='off').required.form-control
 				button(type="submit", id='search-btn', name='search').btn.btn-success.btn-lg.btn-block
-					i.icon-lock.icon-white
-					| Search
+					i.icon-lock.icon-white 
+						| Search
 					div.clear-fix
 		
 		div#wordcloud
-			img(src='/images/wordCloud.png', alt='Word Cloud', style='width:463px;height:400px;border-radius:15px')
+			img(src='/images/Rplot.png', alt='Word Cloud', style='width:463px;height:400px;border-radius:15px;')
 
-			
+		section#contact.container.content-section.text-center
+			.row
+				.col-lg-8.col-lg-offset-2
+					h2 Contact 
+					p
+						| Feel free to email us to provide some feedback, give us suggestions, or to just say hello!
+					p
+						a(href='mailto:clinicaltrials.sjsu@yahoo.com') clinicaltrials.sjsu@yahoo.com
+		// Footer
+		footer
+			.container.text-center
+				p Copyright &copy;  clinicaltrial-env.elasticbeanstalk.com		
 	include modals/alert
 	include modals/confirm
 					
-block scripts
 	script(src='/vendor/jquery.min.js')
 	script(src='/vendor/bootstrap-typeahead.js')
 	script(src='/vendor/jquery.form.js')
@@ -38,4 +77,3 @@ block scripts
 	script(src='/js/controllers/homeController.js')
 	
 
-	

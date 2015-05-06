@@ -3,48 +3,35 @@ var crypto 		= require('crypto');
 var MongoDB 	= require('mongodb').Db;
 var Server 		= require('mongodb').Server;
 var moment 		= require('moment');
+var mongoClient = require('mongodb').MongoClient;
 
-var dbPort 		= 27017;
-var dbHost 		= 'localhost';
-var dbName 		= 'clinical_trials';
-var dbNameSearch = 'clinical';
-var dbNameSubscribe = 'subscribe';
+//var dbPort 		= 27017;
+//var dbHost 		= 'localhost';
+//var dbName 		= 'clinical_trials';
+//var dbNameSearch = 'clinical';
+//var dbNameSubscribe = 'subscribe';
 
 /* establish the database connection */
 
-var db = new MongoDB(dbName, new Server(dbHost, dbPort, {auto_reconnect: true}), {w: 1});
-	db.open(function(e, d){
-	if (e) {
-		console.log(e);
-	}	else{
-		console.log('connected to database :: ' + dbName);
-	}
+/*var accounts;
+mongoClient.connect("mongodb://admin:admin@ds029630.mongolab.com:29630/clinical", {native_parser:true}, function(err, db) {
+	if(!err) {
+    	console.log("We are connected to user info");
+	 	accounts = db.collection('user_info');
+  	}
+});*/
+
+var bsonSearch;
+var recommendSearch;
+mongoClient.connect("mongodb://admin:admin@ds029630.mongolab.com:29630/clinical", {native_parser:true}, function(err, db) {
+	if(!err) {
+    	console.log("We are connected to final results");
+    	accounts = db.collection('user_info');
+	 	bsonSearch = db.collection('final_results');
+	 	recommendSearch = db.collection('recommend_results');
+	 	subscribers = db.collection('subscribers_info');
+  	}
 });
-var accounts = db.collection('accounts');
-
-/*Establish connection to json data db*/
-
-var dbSearch = new MongoDB(dbNameSearch, new Server(dbHost, dbPort, {auto_reconnect: true}), {w: 1});
-	dbSearch.open(function(e, d){
-	if (e) {
-		console.log(e);
-	}	else{
-		console.log('connected to database :: ' + dbNameSearch);
-	}
-});
-var bsonSearch = dbSearch.collection('bson_results');
-
-/*Establish connection to subscribe data db*/
-
-var dbSubscribe = new MongoDB(dbNameSubscribe, new Server(dbHost, dbPort, {auto_reconnect: true}), {w: 1});
-	dbSubscribe.open(function(e, d){
-	if (e) {
-		console.log(e);
-	}	else{
-		console.log('connected to database :: ' + dbNameSubscribe);
-	}
-});
-var subscribers = dbSubscribe.collection('subscribers');
 
 /* login validation methods */
 
@@ -237,23 +224,35 @@ var findByMultipleFields = function(a, callback)
 //Get Record by Search text entered in the search field
 exports.searchResult = function(disease, callback)
 {
-	 bsonSearch.find({ $or: [ { 'clinical_study.brief_title': disease } , { 'clinical_study.official_title': disease } ] }).toArray(
-	//bsonSearch.find({ a : parseInt(disease) }).toArray(
+	bsonSearch.find().toArray(
 		function(e, res) {
 		if (e) callback(e)
-		else callback(null, res)
+		else callback(null, res) 
+	})
+}
+
+exports.saveResult = function(disease, callback)
+{
+	recommendSearch.insert(disease, {safe: true}, callback);
+}
+
+exports.getRecommend = function(callback)
+{
+	recommendSearch.find().limit(10).toArray(
+		function(e, res) {
+		if (e) callback(e)
+		else callback(null, res) 
 	})
 }
 
 exports.searchResultOutput = function(output, callback)
 {
-	 console.log("Inside AM:" +output);
-	bsonSearch.find({'clinical_study.brief_summary.textblock': output }).toArray(
-		function(e, res) {		 
+	bsonSearch.find({'clinical_study.brief_title': output }).toArray(
+		function(e, res) {	
 		if (e) callback(e)
 		else callback(null, res)
 	})
 }
 
-   
+
 

@@ -4,6 +4,9 @@ html
 		title Node.js Login
 		link(rel='stylesheet', href='/vendor/bootstrap.css')
 		link(rel='stylesheet', href='/css/style.css')
+		link(rel='stylesheet', href='/font-awesome/css/font-awesome-2.css')
+		meta(name='viewport', content='width=device-width, initial-scale=1')
+
 	body
 		.navbar-wrapper
 			.container
@@ -19,25 +22,10 @@ html
 					.navbar-collapse.collapse
 						ul.nav.navbar-nav
 							li.active
-								a(href='/Search') Home
+								a(href='/') Home
 							li
-								a(href='http://www.bootply.com', target='ext') About
+								a(href='/') About
 							li
-								a(href='#contact') Contact
-							li.dropdown
-								a.dropdown-toggle(href='#', data-toggle='dropdown') Dropdown
-									b.caret
-								ul.dropdown-menu
-									li
-										a(href='#') Action
-									li
-										a(href='#') Another action
-									li
-										a(href='#') Something else here
-									li.divider
-									li
-										a(href='#') Separated link
-									li
-										a(href='#') One more separated link
+								a(href='/') Contact
 	block content
 	block scripts

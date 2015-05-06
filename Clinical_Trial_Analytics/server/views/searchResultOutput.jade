@@ -1,16 +1,57 @@
+// preset form values if we receive a userdata object //
+- user = typeof(udata) != 'undefined' ? udata : { }
+// store the userId on the client side in a hidden input field //
+input(type='hidden', value= user._id)#userId
 
-include layout
+!!! 5
+html
+	head
+		title Node.js Login
+		link(rel='stylesheet', href='/vendor/bootstrap.css')
+		link(rel='stylesheet', href='/css/style.css')
+		link(rel='stylesheet', href='/font-awesome/css/font-awesome-2.css')
+		meta(name='viewport', content='width=device-width, initial-scale=1')
 
-	#searchResult-container
-		div.container(style='margin:20px', font-size: 100%)
-		- searchResult = typeof(result) != 'undefined' ? result : { }
+	body(style="background-color: #ADD8E6")
+		#search-resultNav
+			.navbar-wrapper
+				.container
+					.navbar.navbar-inverse.navbar-static-top
+						.navbar-header
+							a.navbar-toggle(data-toggle='collapse', data-target='.navbar-collapse')
+								span.icon-bar
+								| &#x9; 
+								span.icon-bar
+								| &#x9;
+								span.icon-bar
+							a.navbar-brand(href='#') Clinical Trials
+						.navbar-collapse.collapse
+							ul.nav.navbar-nav
+								li.active
+									a(href='/Search', id='home') Search
+
+		#searchResult-container
+			div.container(style='margin:20px', font-size: 100%)
+			- searchResult = typeof(result) != 'undefined' ? result : { }
 		
-			div#subscribe
-				button#btn-subscribe.btn
-					i.icon-lock.icon-white
-					| Subscribe
-			
-			#{searchResult}
+				div#subscribe
+					button#btn-subscribe.btn
+						i.icon-lock.icon-white 
+						| Subscribe
+				
+				p !{searchResult}
+	section#contact.container.content-section.text-center
+		.row
+			.col-lg-8.col-lg-offset-2
+				h2 Contact 
+				p
+					| Feel free to email us to provide some feedback, give us suggestions, or to just say hello!
+				p
+					a(href='mailto:clinicaltrials.sjsu@yahoo.com') clinicaltrials.sjsu@yahoo.com
+	// Footer
+	footer
+		.container.text-center
+			p Copyright &copy;  clinicaltrial-env.elasticbeanstalk.com	
 				
 	include modals/alert
 	include modals/subscribe

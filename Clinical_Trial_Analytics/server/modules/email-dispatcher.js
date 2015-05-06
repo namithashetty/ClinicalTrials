@@ -48,7 +48,7 @@ EM.dispatchSubscribeEmail = function(account, callback)
 
 EM.composeEmail = function(o)
 {
-	var link = 'http://localhost:8080/reset-password?e='+o.email+'&p='+o.pass;
+	var link = 'http://clinicaltrial-env.elasticbeanstalk.com/reset-password?e='+o.email+'&p='+o.pass;
 	var html = "<html><body>";
 		html += "Hi "+o.name+",<br><br>";
 		html += "Your username is :: <b>"+o.user+"</b><br><br>";
@@ -61,20 +61,22 @@ EM.composeEmail = function(o)
 
 EM.signupEmail = function(o)
 {
-	var link = 'http://localhost:8080/#';
+	var link = 'http://clinicaltrial-env.elasticbeanstalk.com/#';
 	var html = "<html><body>";
+		html += "<td style=border-left: solid 1px #e9e9e9;>";
 		html += "Hi "+o.name+",<br><br>";
 		html += "Your username is :: <b>"+o.user+"</b><br><br>";
 		html += "<a href='"+link+"'>Please click here to access your account</a><br><br>";
 		html += "Cheers,<br>";
 		html += "Namitha<br><br>";
+		html += "</td>";
 		html += "</body></html>";
 	return  [{data:html, alternative:true}];
 }
 
 EM.subscribeEmail = function(o)
 {
-	var link = 'http://localhost:8080/SearchResultOutput';
+	var link = 'http://clinicaltrial-env.elasticbeanstalk.com/SearchResultOutput';
 	var html = "<html><body>";
 		html += "Hi "+o.name+",<br><br>";
 		html += "<b>Thank you for subscribing for this study<b><br><br>";
